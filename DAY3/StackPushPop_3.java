@@ -9,7 +9,7 @@ interface stack{
 	public void pop();
 	
 }
-class FixedStack implements stack{
+class fixededStack implements stack{
 	int a[]=new int[3];
 	   int count=0;
        int len=a.length;
@@ -49,6 +49,7 @@ class DynamicStack implements stack{
 	public void push(int n) {
 		// TODO Auto-generated method stub
 		list.add(n);
+		System.out.println(list);
 	}
         int a=list.size();
 	@Override
@@ -68,32 +69,36 @@ class DynamicStack implements stack{
 public class StackPushPop_3 {
 
 	public static void main(String[] args) {
-		FixedStack fix=new FixedStack();
-		fix.push(4);
-		fix.push(3);
-		fix.push(55);
-		fix.push(66);
-		fix.push(66);
-		fix.pop();
-		fix.pop();
-		fix.pop();
-		fix.pop();
+		fixededStack fixed=new fixededStack();
+		System.out.println("The element in the fixed stack :");
+		fixed.push(4);
+		fixed.push(3);
+		fixed.push(55);
+		fixed.push(66);
+		fixed.push(66);
+		fixed.pop();
+		fixed.pop();
+		fixed.pop();
+		fixed.pop();
 		System.out.println();
-		DynamicStack d=new DynamicStack();
-		d.push(4);
-		d.push(3);
-		d.push(55);
-		d.push(66);
-		d.push(66);
-        d.pop();
-		d.pop();
-		d.pop();
-		d.pop();
-		d.pop();
-        d.pop();
-        d.pop();
-		d.pop();
-        d.pop();
+		DynamicStack dynamic=new DynamicStack();
+		System.out.println("The element in the dynamic stack :");
+		dynamic.push(4);
+		dynamic.push(3);
+	    dynamic.push(55);
+	    dynamic.push(66);
+	    dynamic.push(66);
+	    dynamic.pop();
+	    dynamic.pop();
+	    dynamic.pop();
+	    dynamic.pop();
+	    dynamic.pop();
+	    dynamic.pop();
+	    dynamic.pop();
+	    dynamic.pop();
+	    dynamic.pop();
+		
+       
 
 
 	}
