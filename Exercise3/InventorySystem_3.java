@@ -9,15 +9,15 @@ public class InventorySystem_3 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ExecutorService executorService = Executors.newFixedThreadPool(3);
-		Inventory in = new Inventory();
+		Inventory inventory = new Inventory();
 		executorService.execute(() -> {
 			for (int i = 0; i < 5; i++) {
-				in.producer();
+				inventory.produce();
 			}
 		});
 		executorService.execute(() -> {
 			for (int i = 0; i < 5; i++) {
-				in.consumer();
+				inventory.consume();
 			}
 		});
 		executorService.shutdown();
@@ -27,7 +27,7 @@ public class InventorySystem_3 {
 class Inventory {
 	boolean flag = false;
 
-	synchronized public void producer() {
+	synchronized public void produce() {
 		if (flag) {
 			try {
 				wait();
@@ -39,7 +39,7 @@ class Inventory {
 		notify();
 	}
 
-	synchronized public void consumer() {
+	synchronized public void consume() {
 		if (!flag) {
 			try {
 				wait();

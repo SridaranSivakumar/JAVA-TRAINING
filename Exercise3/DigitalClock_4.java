@@ -6,78 +6,58 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class DigitalClock_4 {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-		ExecutorService es = Executors.newFixedThreadPool(3);
-		HourMinSec hms = new HourMinSec();
-		es.execute(() -> {
-
-			hms.second();
-
+		ExecutorService executorService = Executors.newFixedThreadPool(3);
+		HourMinSec hourMinSec = new HourMinSec();
+		executorService.execute(() -> {
+			hourMinSec.calculateSec();
 		});
-		es.execute(() -> {
-
-			hms.minutes();
-
+		executorService.execute(() -> {
+			hourMinSec.calculateMin();
 		});
-		es.shutdown();
+		executorService.shutdown();
 	}
 }
-
 class HourMinSec {
-	static int hours = 12, minute = 0, second = 0;
-
-	void second() {
+	static int hour= 12, minute = 0, second = 0;
+	void calculateSec() {
 		try {
 			while (true) {
-
 				if (second == 60) {
 					second = 0;
-
 				} else {
 					Thread.sleep(1000);
-
-					System.out.println(hours + ":" + minute + ":" + second);
+					System.out.println(hour+ ":" + minute + ":" + second);
 					second = second + 1;
-
 				}
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		notify();
-
 	}
-
-	void minutes() {
+	void calculateMin() {
 		try {
 			while (true) {
 				if (minute == 60) {
-					hours();
+					calculateHour();
 				} else {
 					Thread.sleep(60000);
-					minute = minute + 1;
-
-					// System.out.println(hours+":"+minute+":"+second);
+					minute = minute + 1;		
 				}
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
-
+			e.printStackTrace();
 		}
-
 	}
-
-	static void hours() {
-
-		if (hours == 12) {
-			hours = 1;
+	static void calculateHour() {
+		if (hour == 12) {
+			hour = 1;
 			minute = 0;
 		} else {
-			hours += 1;
+			hour += 1;
 			minute = 0;
 		}
 	}

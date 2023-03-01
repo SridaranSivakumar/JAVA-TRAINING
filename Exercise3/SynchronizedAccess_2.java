@@ -8,24 +8,24 @@ public class SynchronizedAccess_2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ExecutorService es = Executors.newFixedThreadPool(3);
+		ExecutorService executorService = Executors.newFixedThreadPool(3);
 		MultipleMethods methods = new MultipleMethods();
-		es.execute(() -> {
-			methods.methodrun("Message1");
+		executorService.execute(() -> {
+			methods.printString("Message1");
 		});
-		es.execute(() -> {
-			methods.methodrun("Message2");
+		executorService.execute(() -> {
+			methods.printString("Message2");
 		});
-		es.execute(() -> {
-			methods.methodrun("message3");
+		executorService.execute(() -> {
+			methods.printString("message3");
 		});
-		es.shutdown();
+		executorService.shutdown();
 	}
 
 }
 
 class MultipleMethods {
-	synchronized void methodrun(String s) {
+	synchronized void printString(String s) {
 		System.out.println("[-------" + s + "--------]");
 	}
 

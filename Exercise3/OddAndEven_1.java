@@ -8,35 +8,48 @@ public class OddAndEven_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ExecutorService es = Executors.newFixedThreadPool(2);
-		IterateNumbers iterater = new IterateNumbers();
-		es.execute(() -> {
-			iterater.printOdd();
+		ExecutorService executorService = Executors.newFixedThreadPool(2);
+		IterateNumbers iterator = new IterateNumbers();
+		executorService.execute(() -> {
+			iterator.printEven();		
 		});
-		es.execute(() -> {
-			iterater.printEven();
+		executorService.execute(() -> {
+			iterator.printOdd();
 		});
-		es.shutdown();
+		executorService.shutdown();
 	}
 
 }
 
 class IterateNumbers {
-	// synchronized
+	synchronized
 	void printOdd() {
 		for (int i = 0; i <= 100; i++) {
 			if (i % 2 != 0) {
 				System.out.print(i + " ");
-			}
+				try {
+					wait();
+				}catch(Exception e) {
+					
+				}
+			}notify();
 		}
+		
 	}
 
-	// synchronized
+	synchronized
 	void printEven() {
 		for (int i = 0; i <= 100; i++) {
 			if (i % 2 == 0) {
 				System.out.print(i + " ");
-			}
+				try {
+					wait();
+				}catch(Exception e) {
+					
+				}
+			}notify();
 		}
+		
+
 	}
 }

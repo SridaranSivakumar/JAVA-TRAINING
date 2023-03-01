@@ -10,7 +10,6 @@ public class SimpleCounting_7 {
 		// TODO Auto-generated method stub
 		ExecutorService executorService = Executors.newFixedThreadPool(2);
 		CountingNum count = new CountingNum();
-
 		executorService.execute(() -> {
 			count.countingthread();
 		});
@@ -18,9 +17,7 @@ public class SimpleCounting_7 {
 	}
 
 }
-
 class CountingNum {
-
 	synchronized void countingthread() {
 		try {
 			for (int i = 1; i <= 100; i++) {

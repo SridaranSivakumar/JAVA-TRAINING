@@ -10,31 +10,25 @@ public class StringBufferThread_8 {
 		// TODO Auto-generated method stub
 		ExecutorService es = Executors.newFixedThreadPool(3);
 		StringBuffer str = new StringBuffer("A");
-		IterateThread it = new IterateThread(str);
+		IterateThread iterator = new IterateThread(str);
 		es.execute(() -> {
-			it.run();
+			iterator.run();
 		});
 		es.execute(() -> {
-			// IterateThread it=new IterateThread(str);
-			it.run();
+			iterator.run();
 		});
 		es.execute(() -> {
-			// IterateThread it=new IterateThread(str);
-			it.run();
+			iterator.run();
 		});
 		es.shutdown();
 	}
-
 }
-
 class IterateThread extends Thread {
 	StringBuffer str;
-
 	public IterateThread(StringBuffer str) {
 		// TODO Auto-generated constructor stub
 		this.str = str;
 	}
-
 	@Override
 	public void run() {
 		synchronized (str) {
@@ -42,9 +36,9 @@ class IterateThread extends Thread {
 				System.out.print(str + " ");
 			}
 			System.out.println();
-			char change = str.charAt(0);
-			change++;
-			String changedstring = Character.toString(change);
+			char val= str.charAt(0);
+			val++;
+			String changedstring = Character.toString(val);
 			str.replace(0, 1, changedstring);
 		}
 	}
