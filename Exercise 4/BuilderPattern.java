@@ -4,8 +4,8 @@ public class BuilderPattern {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Shop shop = new Shop.BuildShop().setbuiscuit("oreo").setchoclate("DairyMilk").setsoap("pears")
-				.settoothbrush("colgate").build();
+		Shop shop = new Shop.BuildShop().setBuiscuit("oreo").setChoclate("DairyMilk").setSoap("pears")
+				.settoothBrush("colgate").build();
 		System.out.println(shop);
 	}
 
@@ -13,55 +13,55 @@ public class BuilderPattern {
 
 class Shop {
 	class ShopProducts {
-		String choclate, biscuit, soap, toothbrush;
+		String choclate, biscuit, soap, toothBrush;
 
-		ShopProducts(String choclate, String biscuit, String soap, String toothbrush) {
+		ShopProducts(String choclate, String biscuit, String soap, String toothBrush) {
 			this.choclate = choclate;
 			this.biscuit = biscuit;
 			this.soap = soap;
-			this.toothbrush = toothbrush;
+			this.toothBrush = toothBrush;
 		}
 
 		@Override
 		public String toString() {
 			// TODO Auto-generated method stub
-			return " Choclate : " + choclate + " Biscuit : " + biscuit + " Soap : " + soap + " ToothBrush : " + toothbrush;
+			return " Choclate : " + choclate + " Biscuit : " + biscuit + " Soap : " + soap + " ToothBrush : " + toothBrush;
 		}
 	}
 
 	ShopProducts product;
-	String shopname = "Nachi";
+	String shopName = "Nachi";
 
 	public Shop(BuildShop bs) {
-		product = new ShopProducts(bs.choclate, bs.biscuit,bs.soap, bs.toothbrush);
+		product = new ShopProducts(bs.choclate, bs.biscuit,bs.soap, bs.toothBrush);
 	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Shop : " + product + "   Shop Name : " + shopname;
+		return "Shop : " + product + "   Shop Name : " + shopName;
 	}
 
 	static class BuildShop {
-		String choclate, biscuit, soap, toothbrush;
+		String choclate, biscuit, soap, toothBrush;
 
-		public BuildShop setchoclate(String choclate) {
+		public BuildShop setChoclate(String choclate) {
 			this.choclate = choclate;
 			return this;
 		}
 
-		public BuildShop setbuiscuit(String biscuit) {
+		public BuildShop setBuiscuit(String biscuit) {
 			this.biscuit = biscuit;
 			return this;
 		}
 
-		public BuildShop setsoap(String soap) {
+		public BuildShop setSoap(String soap) {
 			this.soap = soap;
 			return this;
 		}
 
-		public BuildShop settoothbrush(String toothbrush) {
-			this.toothbrush = toothbrush;
+		public BuildShop settoothBrush(String toothBrush) {
+			this.toothBrush = toothBrush;
 			return this;
 		}
 

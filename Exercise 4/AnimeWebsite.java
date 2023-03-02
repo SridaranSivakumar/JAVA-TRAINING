@@ -4,18 +4,18 @@ class AnimeWebsite {
 	Anime anime;
 
 	public void visit() {
-		anime.watchAnimae();
+		anime.watchAnime();
 	}
 }
 
 abstract class Anime {
-	abstract void watchAnimae();
+	abstract void watchAnime();
 }
 
 class OnePiece extends Anime {
 
 	@Override
-	void watchAnimae() {
+	void watchAnime() {
 		// TODO Auto-generated method stub
 		System.out.println("Watching OnePiece");
 	}
@@ -25,7 +25,7 @@ class OnePiece extends Anime {
 class Naruto extends Anime {
 
 	@Override
-	void watchAnimae() {
+	void watchAnime() {
 		// TODO Auto-generated method stub
 		System.out.println("Watching Naruto");
 	}
@@ -35,7 +35,7 @@ class Naruto extends Anime {
 class DemonSlayer extends Anime {
 
 	@Override
-	void watchAnimae() {
+	void watchAnime() {
 		// TODO Auto-generated method stub
 		System.out.println("Watching DemonSlayer");
 	}

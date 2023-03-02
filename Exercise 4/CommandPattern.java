@@ -6,9 +6,9 @@ import java.util.List;
 public class CommandPattern {
 	public static void main(String[] args) {
 
-		Flipkart Flipkart = new Flipkart();
-		BuyMobile buyMobile = new BuyMobile(Flipkart);
-		SellMobile sellMobile = new SellMobile(Flipkart);
+		Flipkart flipkart = new Flipkart();
+		BuyMobile buyMobile = new BuyMobile(flipkart);
+		SellMobile sellMobile = new SellMobile(flipkart);
 		Broker broker = new Broker();
 		broker.takeOrder(buyMobile);
 		broker.takeOrder(sellMobile);
@@ -35,26 +35,26 @@ class Flipkart {
 }
 
 class BuyMobile implements Order {
-	private Flipkart Flipkart;
+	private Flipkart flipkart;
 
-	public BuyMobile(Flipkart Flipkart) {
-		this.Flipkart = Flipkart;
+	public BuyMobile(Flipkart flipkart) {
+		this.flipkart = flipkart;
 	}
 
 	public void execute() {
-		Flipkart.buy();
+		flipkart.buy();
 	}
 }
 
 class SellMobile implements Order {
-	private Flipkart Flipkart;
+	private Flipkart flipkart;
 
-	public SellMobile(Flipkart Flipkart) {
-		this.Flipkart = Flipkart;
+	public SellMobile(Flipkart flipkart) {
+		this.flipkart = flipkart;
 	}
 
 	public void execute() {
-		Flipkart.sell();
+		flipkart.sell();
 	}
 }
 

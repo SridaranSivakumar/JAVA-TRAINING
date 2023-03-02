@@ -10,14 +10,14 @@ public class FactoryPattern {
 		System.out.println("enter anime name and language");
 		String animeName = scanner.next();
 		String language = scanner.next();
-		AnimeWriter animeWriter = Anime1.animeName(animeName, language);
+		AnimeWriter animeWriter = Anime.createAnime(animeName, language);
 		animeWriter.drawAnime();
 	}
 }
 
-class Anime1 {
+class Anime {
 
-	static AnimeWriter animeName(String animeName, String language) throws Exception {
+	static AnimeWriter createAnime(String animeName, String language) throws Exception {
 		String format = "CreationalPattern.";
 		AnimeBook animeBook = (AnimeBook) Class.forName(format.concat(language)).newInstance();
 		AnimeWriter animeWriter = (AnimeWriter) Class.forName(format.concat(animeName)).newInstance();
@@ -32,14 +32,14 @@ abstract class AnimeWriter {
 	abstract void drawAnime();
 }
 
-class Naruto1 extends AnimeWriter {
+class Naruto extends AnimeWriter {
 	AnimeBook animeBook;
 
 	@Override
 	void drawAnime() {
 		// TODO Auto-generated method stub
 		System.out.println("Naruto book");
-		animeBook.diaplay();
+		animeBook.display();
 	}
 
 	@Override
@@ -49,14 +49,14 @@ class Naruto1 extends AnimeWriter {
 	}
 }
 
-class OnePiece1 extends AnimeWriter {
+class OnePiece extends AnimeWriter {
 	AnimeBook animeBook;
 
 	@Override
 	void drawAnime() {
 		// TODO Auto-generated method stub
 		System.out.println("OnePiece book");
-		animeBook.diaplay();
+		animeBook.display();
 	}
 
 	@Override
@@ -67,12 +67,12 @@ class OnePiece1 extends AnimeWriter {
 }
 
 abstract class AnimeBook {
-	abstract void diaplay();
+	abstract void display();
 }
 
 class Japanese extends AnimeBook {
 	@Override
-	void diaplay() {
+	void display() {
 		// TODO Auto-generated method stub
 		System.out.println("Anime in Japanese");
 	}
@@ -80,7 +80,7 @@ class Japanese extends AnimeBook {
 
 class English extends AnimeBook {
 	@Override
-	void diaplay() {
+	void display() {
 		// TODO Auto-generated method stub
 		System.out.println("Anime in English");
 	}

@@ -7,9 +7,9 @@ public class VisitorPattern {
 	public static void main(String[] args) throws SpeedException {
 		// TODO Auto-generated method stub
 		Bike bike = new Bike();
-		Scanner sc = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the speed");
-		String str = sc.nextLine();
+		String str = scanner.nextLine();
 		Speed speed = new Speed();
 		bike.BikeSpeed(speed, str);
 	}
@@ -43,23 +43,23 @@ class Speed {
 }
 
 abstract class Handler {
-	abstract void handle(HighSpeed hs);
+	abstract void handle(HighSpeed highSpeed);
 
-	abstract void handle(VeryHighSpeed vhs);
+	abstract void handle(VeryHighSpeed veryHighSpeed);
 
-	abstract void handle(OverSpeed os);
+	abstract void handle(OverSpeed overSpeed);
 }
 
 class SpeedHandler extends Handler {
-	public void handle(HighSpeed hs) {
+	public void handle(HighSpeed highSpeed) {
 		System.out.println("Speed is over than 80 Km/hr");
 	}
 
-	public void handle(VeryHighSpeed hs) {
+	public void handle(VeryHighSpeed veryHighSpeed) {
 		System.out.println("Speed is over than 120 Km/hr");
 	}
 
-	public void handle(OverSpeed hs) {
+	public void handle(OverSpeed overSpeed) {
 		System.out.println("Speed is over than 150 Km/hr");
 	}
 }
@@ -82,8 +82,8 @@ class HighSpeed extends SpeedException {
 
 	@Override
 	public void visit() {
-		SpeedHandler dbh = new SpeedHandler();
-		dbh.handle(this);
+		SpeedHandler speedHandler = new SpeedHandler();
+		speedHandler.handle(this);
 	}
 }
 
@@ -101,8 +101,8 @@ class VeryHighSpeed extends SpeedException {
 
 	@Override
 	public void visit() {
-		SpeedHandler dbh = new SpeedHandler();
-		dbh.handle(this);
+		SpeedHandler speedHandler = new SpeedHandler();
+		speedHandler.handle(this);
 	}
 }
 
@@ -120,7 +120,7 @@ class OverSpeed extends SpeedException {
 
 	@Override
 	public void visit() {
-		SpeedHandler dbh = new SpeedHandler();
-		dbh.handle(this);
+		SpeedHandler speedHandler = new SpeedHandler();
+		speedHandler.handle(this);
 	}
 }
