@@ -30,7 +30,7 @@ class IterateNumbers {
 				try {
 					wait();
 				}catch(Exception e) {
-					
+					e.printStackTrace();
 				}
 			}notify();
 		}
@@ -45,7 +45,7 @@ class IterateNumbers {
 				try {
 					wait();
 				}catch(Exception e) {
-					
+					e.printStackTrace();
 				}
 			}notify();
 		}

@@ -9,16 +9,16 @@ public class SimpleCounting_7 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ExecutorService executorService = Executors.newFixedThreadPool(2);
-		CountingNum count = new CountingNum();
+		CountNumber count = new CountNumber();
 		executorService.execute(() -> {
-			count.countingthread();
+			count.countthread();
 		});
 
 	}
 
 }
-class CountingNum {
-	synchronized void countingthread() {
+class CountNumber{
+	synchronized void countthread() {
 		try {
 			for (int i = 1; i <= 100; i++) {
 				if (i % 10 == 0) {
@@ -29,6 +29,7 @@ class CountingNum {
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}

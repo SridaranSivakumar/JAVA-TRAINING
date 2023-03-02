@@ -8,24 +8,24 @@ public class StringBufferThread_8 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ExecutorService es = Executors.newFixedThreadPool(3);
+		ExecutorService executorService = Executors.newFixedThreadPool(3);
 		StringBuffer str = new StringBuffer("A");
-		IterateThread iterator = new IterateThread(str);
-		es.execute(() -> {
+		ThreadIterate iterator = new ThreadIterate(str);
+		executorService.execute(() -> {
 			iterator.run();
 		});
-		es.execute(() -> {
+		executorService.execute(() -> {
 			iterator.run();
 		});
-		es.execute(() -> {
+		executorService.execute(() -> {
 			iterator.run();
 		});
-		es.shutdown();
+		executorService.shutdown();
 	}
 }
-class IterateThread extends Thread {
+class ThreadIterate extends Thread {
 	StringBuffer str;
-	public IterateThread(StringBuffer str) {
+	public ThreadIterate(StringBuffer str) {
 		// TODO Auto-generated constructor stub
 		this.str = str;
 	}

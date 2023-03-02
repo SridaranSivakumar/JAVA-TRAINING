@@ -10,11 +10,11 @@ public class NonAlphaCharacter_6 {
 		ExecutorService executorService = Executors.newFixedThreadPool(1);
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the String");
-		String str = scanner.nextLine();
-		CountingCharacters count = new CountingCharacters();
+		String string = scanner.nextLine();
+		CountCharacters count = new CountCharacters();
 		executorService.execute(() -> {
 			try {
-				count.checking(str);
+				count.check(string);
 			} catch (NotACharacterException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -22,10 +22,10 @@ public class NonAlphaCharacter_6 {
 		});
 	}
 }
-class CountingCharacters {
+class CountCharacters {
 	int count = 0;
 
-	public void checking(String str) throws NotACharacterException {
+	public void check(String str) throws NotACharacterException {
 		char[] splitstring = str.toCharArray();
 		// try {
 		for (int i = 0; i < splitstring.length; i++) {

@@ -32,6 +32,7 @@ class Inventory {
 			try {
 				wait();
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 		System.out.println("producer produces");
@@ -44,6 +45,7 @@ class Inventory {
 			try {
 				wait();
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 		System.out.println("consumer consumes");
