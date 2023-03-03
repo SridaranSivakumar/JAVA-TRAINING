@@ -5,7 +5,7 @@ public class BuilderPattern {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Shop shop = new Shop.BuildShop().setBuiscuit("oreo").setChoclate("DairyMilk").setSoap("pears")
-				.settoothBrush("colgate").build();
+				.setToothBrush("colgate").build();
 		System.out.println(shop);
 	}
 
@@ -60,7 +60,7 @@ class Shop {
 			return this;
 		}
 
-		public BuildShop settoothBrush(String toothBrush) {
+		public BuildShop setToothBrush(String toothBrush) {
 			this.toothBrush = toothBrush;
 			return this;
 		}
