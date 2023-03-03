@@ -11,14 +11,14 @@ public class SimpleCounting_7 {
 		ExecutorService executorService = Executors.newFixedThreadPool(2);
 		CountNumber count = new CountNumber();
 		executorService.execute(() -> {
-			count.countthread();
+			count.countThread();
 		});
 
 	}
 
 }
 class CountNumber{
-	synchronized void countthread() {
+	synchronized void countThread() {
 		try {
 			for (int i = 1; i <= 100; i++) {
 				if (i % 10 == 0) {
