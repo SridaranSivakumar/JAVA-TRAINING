@@ -30,7 +30,7 @@ public class LorryProblem {
 		hours = currentTime.getHour();
 		minute = currentTime.getMinute();
 		year = currentDate.getYear();
-		week = currentDate.getDayOfWeek();
+		
 		month = currentDate.getMonthValue();
 		day = currentDate.getDayOfMonth();
 		LocalDate date = LocalDate.of(year, month, day);
@@ -42,19 +42,21 @@ public class LorryProblem {
 		boolean val = true;
 		int remainingHour;
 		while (val) {
+			week = startDate.getDayOfWeek();
+			String weekDays=week.toString();
 			if (hours < 24) {
-				if (week.equals("SUNDAY") || weekOfMonth1 == 2 || (month == 1 && day == 1) || (month == 1 && day == 26)
+				if (weekDays.equalsIgnoreCase("SUNDAY") || weekOfMonth1 == 2 || (month == 1 && day == 1) || (month == 1 && day == 26 || checkLeapYear(year))
 						|| (month == 8 && day == 15)) {
 					System.out.println("Holiday");
 					countDays++;
 					startDate = currentDate.plusDays(countDays);
 				} else {
-					if (coveredDistance < totalDistance && hours <= 4) {
+					if (coveredDistance < totalDistance && hours <= 16) {
 						coveredDistance += distanceInOneDay;
 						countDays++;
 						
 						startDate = currentDate.plusDays(countDays);
-					} else if (coveredDistance < totalDistance && hours > 4) {
+					} else if (coveredDistance < totalDistance && hours > 16) {
 						int getHour = currentTime.getHour();
 						remainingHour = 24 - getHour;
 						int distance = remainingHour * speed;
@@ -62,7 +64,7 @@ public class LorryProblem {
 						countDays++;
 						startDate = currentDate.plusDays(countDays);
 					} else {
-						System.out.println("Destination Reached Date : "+startDate);
+						System.out.println("Destination Reached Date : "+startDate.minusDays(1));
 						val = false;
 
 					}
@@ -70,7 +72,13 @@ public class LorryProblem {
 			}
 		}
 	}
-
+	private static boolean checkLeapYear(int year) {
+		if((year%4==0 && year%100!=0 )|| year%400==0) {
+			return true;
+		}else {
+		return false;
+		}
+	}
 	public static int calDistance(int speed) {
 		return speed * 8;
 	}
